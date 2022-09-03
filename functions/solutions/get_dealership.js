@@ -1,5 +1,5 @@
 /**
- * @author Willie Joseph
+ * 
  * First action
  */
 
@@ -54,7 +54,7 @@ function main(params) {
 
 
 /**
- * @author Willie Joseph
+ * 
  * Second action
  */
 

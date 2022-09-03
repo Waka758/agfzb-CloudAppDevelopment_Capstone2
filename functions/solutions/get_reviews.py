@@ -1,6 +1,6 @@
 #
 #
-# @author: Willie Joseph
+# 
 # First action
 #
 #
@@ -39,7 +39,7 @@ def main(dict):
 
 #
 #
-# @author: Willie Joseph
+# 
 # Second action
 #
 #

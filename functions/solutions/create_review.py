@@ -1,6 +1,6 @@
 #
 #
-# @author: Willie Joseph
+# 
 # 
 #
 import sys
