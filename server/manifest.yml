@@ -1,11 +1,11 @@
   applications:
   - name: djangoapp
     routes:
-      - route: chefwilliejo.us-south.mybluemix.net
-    memory: 65M
+      - route: chefwilliejo.us-south.cf.appdomain.cloud
+    memory: 80M
     buildpack: python_buildpack
   - name: djangoapp-nginx
     routes:
-      - route: chefwilliejo.us-south.mybluemix.net/static
+      - route: chefwilliejo.us-south.cf.appdomain.cloud/static
     memory: 45M
     buildpack: staticfile_buildpack
