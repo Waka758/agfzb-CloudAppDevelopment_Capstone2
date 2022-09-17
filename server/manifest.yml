@@ -1,10 +1,10 @@
 applications:
-  - name: djangoapp
+  - name: djangoapp758
     routes:
       - route: chefwilliejo.us-south.cf.appdomain.cloud
     memory: 65M
     buildpack: python_buildpack
-  - name: djangoapp-nginx
+  - name: djangoapp758-nginx
     routes:
       - route: chefwilliejo.us-south.cf.appdomain.cloud/static
     memory: 45M
