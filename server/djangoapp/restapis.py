@@ -3,6 +3,11 @@ import os
 import json
 from .models import CarDealer, DealerReview
 from requests.auth import HTTPBasicAuth
+import time
+
+
+
+
 
 
 # Create a `get_request` to make HTTP GET requests
@@ -105,7 +110,7 @@ def get_dealer_reviews_from_cf(url, dealerId):
 # - Call get_request() with specified arguments
 # - Get the returned sentiment label such as Positive or Negative
 def analyze_review_sentiments(text):
-    URL = 'https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/5220b6cd-b632-4a2a-8f8d-fb49e9096c4f'
+    URL = 'https://api.us-south.natural-language-understanding.watson.cloud.ibm.com/instances/c05ff649-7ba7-4a78-90f8-39077c3d8b1c'
     API_KEY = os.getenv('NLU_API_KEY')
     params = json.dumps({"text": text, "features": {"sentiment": {}}})
     response = requests.post(

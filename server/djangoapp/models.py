@@ -1,4 +1,5 @@
 import sys
+from django.db import models
 from django.utils.timezone import now
 try:
     from django.db import models
@@ -26,7 +27,7 @@ class CarModel(models.Model):
     year = models.DateField()
 
     def __str__(self):
-        return self.name
+        return 'Name ' + self.name
 
 
 # <HINT> Create a plain Python class `CarDealer` to hold dealer data
@@ -58,3 +59,6 @@ class DealerReview:
         self.car_year = car_year
         self.sentiment = sentiment
         self.id = id
+    
+    def __str__(self):
+        return "Review: " + self.review
