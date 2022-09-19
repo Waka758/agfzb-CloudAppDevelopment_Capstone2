@@ -1,64 +1,81 @@
-import sys
+import datetime
 from django.db import models
 from django.utils.timezone import now
-try:
-    from django.db import models
-except Exception:
-    print("There was an error loading django modules. Do you have django installed?")
-    sys.exit()
 
-from django.conf import settings
-import uuid
 
-# <HINT> Create a Car Make model `class CarMake(models.Model)`:
+# Create your models here.
+
 class CarMake(models.Model):
-    name = models.CharField(max_length=30)
-    description = models.CharField(max_length=300)
+    name = models.CharField(null=False, max_length=30, default='car make')
+    description = models.CharField(max_length=500)
 
     def __str__(self):
         return self.name
 
-# <HINT> Create a Car Model model `class CarModel(models.Model):`:
 class CarModel(models.Model):
+    SEDAN = 'sedan'
+    SUV = 'SUV'
+    WAGON = 'wagon'
+    PICKUP = 'pickup'
+    TYPE_CHOICES = [
+        (SEDAN, 'Sedan'),
+        (SUV, 'SUV'),
+        (WAGON, 'Wagon'),
+        (PICKUP, 'Pickup')
+    ]
+    YEAR_CHOICES = [(r,r) for r in range(1990, datetime.date.today().year+1)]
     car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
-    name = models.CharField(max_length=30)
-    type_c = models.CharField(max_length=10, choices=(('Sedan', 'Sedan',), ('SUV', 'SUV'), ('HATCHBACK', 'HATCHBACK'),('WAGON', 'WAGON')))
+    name = models.CharField(null=False, max_length=30, default='car model')
     dealer_id = models.IntegerField()
+    _type = models.CharField(null=False, max_length=30, choices=TYPE_CHOICES)
     year = models.DateField()
 
     def __str__(self):
-        return 'Name ' + self.name
+        return "Name: " + self.name 
+                #"Make: " + self.car_make + \
+                #"Dealer ID: " + self.dealer_id + \
+                #"Type: " + self._type + \
+                #"Year: " + self.year
 
-
-# <HINT> Create a plain Python class `CarDealer` to hold dealer data
 class CarDealer:
+
     def __init__(self, address, city, full_name, id, lat, long, short_name, st, zip):
+        # Dealer address
         self.address = address
+        # Dealer city
         self.city = city
+        # Dealer Full Name
         self.full_name = full_name
+        # Dealer id
         self.id = id
+        # Location lat
         self.lat = lat
+        # Location long
         self.long = long
+        # Dealer short name
         self.short_name = short_name
+        # Dealer state
         self.st = st
+        # Dealer zip
         self.zip = zip
 
     def __str__(self):
         return "Dealer name: " + self.full_name
 
-# <HINT> Create a plain Python class `DealerReview` to hold review data
 class DealerReview:
     def __init__(self, dealership, name, purchase, review, purchase_date, car_make, car_model, car_year, sentiment, id):
         self.dealership = dealership
         self.name = name
         self.purchase = purchase
+        self.id = id
         self.review = review
-        self.purchase_date = purchase_date
+        self.ourchase_date = purchase_date
         self.car_make = car_make
         self.car_model = car_model
         self.car_year = car_year
         self.sentiment = sentiment
-        self.id = id
-    
+
     def __str__(self):
-        return "Review: " + self.review
+        return "Review :" + self.review + \
+                "Name: " + self.name + \
+                "Sentiment: " + self.sentiment

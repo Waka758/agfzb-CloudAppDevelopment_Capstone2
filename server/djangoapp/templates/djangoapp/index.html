@@ -25,7 +25,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                 <li>
-                    <a class="btn btn-link" href="#">{{ user.first_name }}({{ user.username }})</a>
+                    <a class="btn btn-link" href="#">Hi {{ user.first_name }}!</a>
                     <a class="btn btn-link" href="{% url 'djangoapp:logout' %}">Logout</a>
                 </li>
                 {% else %}
@@ -50,11 +50,11 @@
     <table class="table" id="table" data-filter-control="true">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Dealer Name</th>
-                    <th scope="col">City</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Zip</th>
+                    <th data-field="id">ID</th>
+                    <th data-field="full_name">Dealer Name</th>
+                    <th data-field="city">City</th>
+                    <th data-field="address">Address</th>
+                    <th data-field="zip">Zip</th>
                     <th data-field="state" data-filter-control="select">State</th>
                 </tr>
             </thead>
